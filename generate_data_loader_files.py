@@ -26,7 +26,7 @@ def generate_nca_output(df, outdir):
 
 def generate_unsubscribed_output(df, outdir):
     unsubscribed_df = df[df['ActivityType__c'] == 'Unsubscribed'][['ca id']].copy()
-    unsubscribed_df.rename(columns={'ca id': 'Id'})
+    unsubscribed_df = unsubscribed_df.rename(columns={'ca id': 'Id'})
     unsubscribed_df['Unsubscribed__c'] = 'TRUE'
     unsubscribed_df['Status__c'] = 'Not Interested'
     unsubscribed_df.to_csv(os.path.join(outdir, 'unsubscribed.csv'), index=False)
